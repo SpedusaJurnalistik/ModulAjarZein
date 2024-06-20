@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id" >
+
+<head>
+  <title>Modul Ajar Tembang Gambung AB Zein</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/magazine.css">
+  <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  <script type="text/javascript" src="./assets/extras/jquery.min.1.7.js"></script>
+  <script type="text/javascript" src="./assets/extras/modernizr.2.5.3.min.js"></script>
+</head>
+
+<body>
+
+  <div id="loader" class="fixed z-[999] bg-black w-full flex justify-center items-center h-[100vh]">
+    <svg class="ip" viewBox="0 0 256 128" width="256px" height="128px" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#5ebd3e" />
+          <stop offset="33%" stop-color="#ffb900" />
+          <stop offset="67%" stop-color="#f78200" />
+          <stop offset="100%" stop-color="#e23838" />
+        </linearGradient>
+        <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0%" stop-color="#e23838" />
+          <stop offset="33%" stop-color="#973999" />
+          <stop offset="67%" stop-color="#009cdf" />
+          <stop offset="100%" stop-color="#5ebd3e" />
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke-linecap="round" stroke-width="16">
+        <g class="ip__track" stroke="#ddd">
+          <path d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56" />
+          <path d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64" />
+        </g>
+        <g stroke-dasharray="180 656">
+          <path class="ip__worm1" stroke="url(#grad1)" stroke-dashoffset="0"
+            d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56" />
+          <path class="ip__worm2" stroke="url(#grad2)" stroke-dashoffset="358"
+            d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64" />
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <audio id="audioPlayer">
+    <source src="./assets/sound/start-flip.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div id="canvas"
+    class="w-[100%] bg-no-repeat bg-cover overflow-hidden">
+    <div class="">
+<!-- Change Background Content -->
+<div id="backgroundContent" class="absolute flex justify-center items-center w-full h-full z-[1000] lg:z-10 hidden">
+  <div class="bg-white/90 grid grid-cols-2 gap-3 w-[90%] h-[40%] xl:w-[40%] xl:h-[40%] shadow-2xl rounded-lg pt-10">
+<img onclick="backgroundChange(1)" class="h-[70%] w-[80%] mx-auto cursor-pointer" src="./assets/css/bg/1.jpg" alt="">
+<img onclick="backgroundChange(2)" class="h-[70%] w-[80%] mx-auto cursor-pointer" src="./assets/css/bg/2.jpg" alt="">
+<img onclick="backgroundChange(3)" class="h-[70%] w-[80%] mx-auto cursor-pointer" src="./assets/css/bg/3.jpg" alt="">
+<img onclick="backgroundChange(4)" class="h-[70%] w-[80%] mx-auto cursor-pointer" src="./assets/css/bg/4.jpg" alt="">
+  </div>
+</div>
+
+
+    <div class="flex justify-center">
+      <div id="navbar"
+        class="   border-green-500  shadow-2xl  w-[95%] rounded-b-xl  transition-all duration-500 absolute flex items-center py-1 pt-2 z-[200] justify-around bg-white/70 backdrop-blur-3xl col">
+        <div>
+          <lord-icon id="fs" src="https://cdn.lordicon.com/pnwpbzow.json" trigger="click" class="w-full"
+            style="scale: 1.5; cursor: pointer">
+          </lord-icon>
+          <div class="text-center">Fullscreen</div>
+        </div>
+
+        <div class="col-span-1" onclick="$('#FlipMode').show()">
+          <lord-icon class="w-full" src="https://cdn.lordicon.com/wxnxiano.json" trigger="hover"
+            style="scale: 1.6; cursor: pointer">
+          </lord-icon>
+          <div class="text-center">Mode Flip</div>
+        </div>
+
+        <div class="col-span-1" onclick="zoom()">
+          <lord-icon class="w-full" src="https://cdn.lordicon.com/msoeawqm.json" trigger="hover"
+            style="scale: 1.6; cursor: pointer">
+          </lord-icon>
+          <div class="text-center">Zoom</div>
+        </div>
+
+        <div id="More" class="relative" onclick="$('#MoreOptions').show()">
+          <lord-icon id="iconMore" class="w-full" src="https://cdn.lordicon.com/ynwbvguu.json" trigger="click"
+            style="scale: 1.5; cursor: pointer">
+          </lord-icon>
+          <div class="">Lainnya</div>
+
+          <!-- More Options -->
+          <div id="MoreOptions"
+            class="bg-white/90 border border-green-500 -left-48 absolute py-5 flex justify-around shadow-2xl px-5 rounded-2xl w-64 h-fit gap-3 animate__animated mt-8 z-50">
+
+            <div class="flex-col justify-around items-center gap-2">
+            <!-- <div onclick="contentshow()">
+              <lord-icon class="w-full h-12" src="https://cdn.lordicon.com/jvucoldz.json" trigger="hover"
+                style=" cursor: pointer">
+              </lord-icon>
+              <div class="text-center">Daftar Isi</div>
+            </div> -->
+
+            <div id="single2">
+              <lord-icon id="singlepage" class="w-full h-12" src="https://cdn.lordicon.com/nocovwne.json" trigger="click"
+                style=" cursor: pointer">
+              </lord-icon>
+              <div id="textid" class="text-center">Ganda</div>
+            </div>
+
+            <div>
+              <a href="./Settings/ModulZeinAB.pdf">
+                <div class="flex items-center justify-center h-12">
+                  <svg class="h-12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    version="1.1" id="Warstwa_3" x="0px" y="0px" viewBox="0 0 430 430"
+                    style="enable-background: new 0 0 430 430" xml:space="preserve">
+                    <g>
+                      <path class="st0"
+                        d="M334.98,365.13H94.85c-12.55,0-24.34-4.89-33.22-13.78c-8.87-8.88-13.75-20.69-13.73-33.23l0.07-44.74   c0.01-3.86,3.14-6.99,7-6.99c0,0,0.01,0,0.01,0c3.87,0.01,7,3.14,6.99,7.01l-0.07,44.73c-0.01,8.81,3.41,17.09,9.63,23.32   c6.23,6.23,14.5,9.67,23.31,9.67h240.12c18.2,0,33.03-14.81,33.05-33.01l0.06-43.05c0.01-3.86,3.14-6.99,7-6.99c0,0,0.01,0,0.01,0   c3.87,0,7,3.14,6.99,7.01l-0.06,43.05C382,344.05,360.89,365.13,334.98,365.13z" />
+                      <path class="st1"
+                        d="M215.33,294.02c-1.76,0-3.44-0.7-4.68-1.94l-55.67-55.68c-2.59-2.58-2.58-6.78,0-9.36   c2.59-2.59,6.78-2.58,9.36,0l44.4,44.4V71.87c0-3.66,2.96-6.62,6.62-6.62s6.62,2.96,6.62,6.62v199.52l44.7-44.7   c2.59-2.59,6.78-2.58,9.36,0c2.58,2.58,2.58,6.78,0,9.36l-56.02,56.02C218.77,293.32,217.09,294.02,215.33,294.02z" />
+                    </g>
+                  </svg>
+                </div>
+              </a>
+              <div class="text-center">Unduh</div>
+            </div>
+          </div>
+
+<div class="flex-col justify-around items-center gap-2">
+
+
+            <div class="cursor-pointer" onclick="SwitchSound()">
+              <div class="flex justify-center items-center">
+                <img src="./assets/img/suara.png" class="h-12" id="iconSound" alt="" />
+              </div>
+
+              <div class="text-center mt-[6px]">Suara Flip</div>
+            </div>
+<!-- 
+            <div class="cursor-pointer" onclick="$('#share').show()">
+              <div class="flex justify-center items-center">
+                <img src="./assets/img/share.png" class="h-12" id="iconShare" alt="" />
+              </div>
+
+              <div class="text-center mt-[6px]">Bagikan</div>
+            </div> -->
+
+            <div onclick="backgroundShowHide()">
+              <lord-icon class="w-full h-12" src="https://cdn.lordicon.com/nxaaasqe.json" trigger="hover"
+                style=" cursor: pointer">
+              </lord-icon>
+              <div class="text-center">Background</div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Flip Mode -->
+    <div id="FlipMode" class="absolute flex justify-center items-center w-full h-full backdrop-blur-md z-[70]">
+      <div id="load1"
+        class="bg-white/50 hidden backdrop-blur flex items-center flex-col w-[70%] pb-6 h-[40%] rounded-3xl border-green-500 border-2 border-collapse shadow-2xl">
+        <lord-icon class="" src="https://cdn.lordicon.com/jqeuwnmb.json" trigger="loop"
+          style="width: 250px; height: 250px">
+        </lord-icon>
+        <h1 class="text-center font-bold text-2xl capitalize">
+          Flip Mode
+        </h1>
+        <div class="mt-[6%] flex justify-around w-full">
+          <h1 style="font-family: 'Azonix', sans-serif" onclick="ChangeToSmoothMode();$('#FlipMode').hide()"
+            class="border-2 font-medium border-green-500 px-3 rounded-full cursor-pointer text-xl lg:text-3xl text-center">
+            MODE 1
+          </h1>
+          <h1 style="font-family: 'Azonix', sans-serif" onclick="ChangeToHardMode();$('#FlipMode').hide()"
+            class="border-2 border-green-500 px-5 rounded-full cursor-pointer text-xl lg:text-3xl font-medium text-center">
+            MODE 2
+          </h1>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Share -->
+    <div id="share" class="flex justify-center  absolute w-full h-full items-center">
+      <div id="load2" class="bg-white hidden w-[95%] z-[1000] lg:w-[30%] h-fit pb-5 rounded-2xl flex flex-col shadow-2xl">
+  
+        <div class="flex justify-between mx-6 mt-4">
+          <h1 style="font-family: 'Inter', sans-serif;
+      " class="text-[#3D5A80] font-medium text-lg">Bagikan Dengan</h1>
+          <h1 onclick="$('#share').hide()" class="text-2xl font-light -mt-3 cursor-pointer">x</h1>
+        </div>
+  
+        <div class="flex justify-around mt-4 mx-2">
+          <div onclick="goWA()" class="scale-75 cursor-pointer md:scale-100">
+            <img class="mx-auto" src="./assets//img/wa.png" alt="">
+            <h1 class="text-center">WhatsApp</h1>
+          </div>
+  
+          <div onclick="goFB()" class="scale-75 cursor-pointer md:scale-100">
+            <img class="mx-auto" src="./assets/img/fb.png" alt="">
+            <h1 class="text-center">Facebook</h1>
+          </div>
+  
+          <div onclick="goTELE()" class="scale-75 cursor-pointer md:scale-100">
+            <img class="mx-auto" src="./assets/img/tele.png" alt="">
+            <h1 class="text-center">Telegram</h1>
+          </div>
+  
+          <div onclick="goGIT()" class="scale-75 cursor-pointer md:scale-100">
+            <img class="mx-auto" src="./assets/img/git.png" alt="">
+            <h1 class="text-center">GitHub</h1>
+          </div>
+  
+  
+        </div>
+        <h1 class="text-center text-[#3D5A80] font-medium mt-3">Atau Bagaikan Dengan link</h1>
+  
+        <div class="w-fit mt-4 px-2 py-2 bg-gray-100 mx-auto rounded-lg">
+          <h1 class="inline text-[12px]">https://spedusajurnalistik.github.io/MajalahDigital/</h1>
+          <img onclick="copyUrl()" class="active:scale-90 inline ml-1 cursor-pointer" src="./assets/img/copy.png" alt="">
+        </div>
+  
+      </div>
+    </div>
+  
+    <!-- Daftar Isi -->
+    <!-- <div  id="daftarisi"
+      class="bg-white/50 backdrop-blur overflow-y-scroll overflow-x-visible absolute z-[1000] h-[100%] w-full flex flex-col justify-start animate__animated animate__fadeIn border border-green-500">
+      <div class="text-center text-4xl pb-2 text-black md:text-4xl uppercase font-extrabold mt-2 bg-gradient-to-r from-red-500 to-yellow-400 bg-clip-text text-transparent">
+        Daftar Isi
+        <div class="w-24 h-1 mx-auto mt-5 bg-orange-500"></div>
+      </div>
+    </div> -->
+    
+    <div id="lanjut" class="rounded-full bg-white/50 lg:hidden right-10 w-fit h-fit absolute bottom-[10%] z-[9]">
+      <img src="./assets/img/next.png" class="h-14 rounded-full hover:scale-110 transition-all duration-300 active:scale-90"
+        alt="" />
+    </div>
+
+    <div id="kembali" class="rounded-full bg-white/50 lg:hidden left-10  w-fit bottom-[10%] h-fit absolute z-[9]">
+      <img src="./assets/img/prev.png" class="h-14 hover:scale-110 transition-all duration-300 active:scale-90" alt="" />
+    </div>
+
+    <div  id="box" class="magazine-viewport toggleHideNav">
+      <div class="container">
+        <div id="majalahdigital" class="magazine animate__animated animate__fadeIn">
+          <div id="front">
+            <img class="w-full h-full" src="./pages/page_page-001.jpg" alt="" srcset="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="hidden -translate-y-[75px] mt-1 text-2xl capitalize text-center w-full font-light flex justify-start item-center py-3 hover:bg-white/50 active:bg-white/50 px-3 gap-5"></div>
+  
+
+
+  <!-- import JS -->
+  <script src="./Settings/config.js"></script>
+  <script src="./assets/js/majalah.js" type="text/javascript"></script>
+  <script src="./Settings/daftarIsi.js"></script>
+  
+</body>
+
+</html>
